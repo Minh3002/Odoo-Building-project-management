@@ -1,0 +1,34 @@
+<odoo>
+    <record id="view_project_form" model="ir.ui.view">
+        <field name="name">construction.project.form</field>
+        <field name="model">construction.project</field>
+        <field name="arch" type="xml">
+            <form string="Dự án Xây Dựng">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="partner_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Kho Hàng">
+                            <field name="stock_picking_ids" widget="many2many_tags"/>
+                        </page>
+                        <page string="Hóa Đơn">
+                            <field name="invoice_ids" widget="many2many_tags"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_construction_project" model="ir.actions.act_window">
+        <field name="name">Dự Án Xây Dựng</field>
+        <field name="res_model">construction.project</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_construction_project" name="Quản lý Dự Án"
+        parent="stock.menu_stock_root" action="action_construction_project"/>
+</odoo>
+
