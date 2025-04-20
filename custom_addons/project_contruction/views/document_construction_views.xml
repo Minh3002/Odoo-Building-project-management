@@ -1,0 +1,45 @@
+<odoo>
+    <record id="view_document_construction_form" model="ir.ui.view">
+        <field name="name">document.construction.form</field>
+        <field name="model">document.construction</field>
+        <field name="arch" type="xml">
+            <form string="Construction document">
+                <sheet>
+                    <group>
+                        <field name="document_name" placeholder="Nhập tên tài liệu ví dụ: tài liệu mua bán vật liệu thô"/>
+                        <field name="document_description" placeholder="Mô tả ngắn gọn nội dung tài liệu"/>
+                        <field name="created_by" readonly="1"/>
+                        <field name="upload_date" readonly="1"/>
+                        <field name="task_id" readonly="1"/>
+                    </group>
+                    <group string="File tài liệu">
+                        <field name="upload_date" readonly="1"/>    
+                        <field name="document_attachment" filename="document_attachment_name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_document_construction_list" model="ir.ui.view">
+        <field name="name">document.construction.list</field>
+        <field name="model">document.construction</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="document_name"/>
+                <field name="document_attachment"/>
+                <field name="task_id"/>
+                <field name="upload_date"/> 
+            </list>
+        </field>
+    </record>
+
+    <record id="action_document_construction" model="ir.actions.act_window">
+        <field name="name">Construction documents</field>
+        <field name="res_model">document.construction</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_document_construction_root" name="Documents" action="action_document_construction"/>
+</odoo>

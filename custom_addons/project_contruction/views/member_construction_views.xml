@@ -1,0 +1,35 @@
+<odoo>
+    <record id="view_member_construction_form" model="ir.ui.view">
+        <field name="name">member.construction.form</field>
+        <field name="model">member.construction</field>
+        <field name="arch" type="xml">
+            <form string="Construction member">
+                <sheet>
+                    <group>
+                        <field name="position_id"  placeholder="Chọn vị trí" required="True"/>
+                        <field name="member_id" placeholder="Chọn thành viên" required="True"/>
+                        <field name="total_task_count" readonly="1"/>
+                        <field name="delay_task_count" readonly="1"/>
+                        <field name="done_task_count" readonly="1"/>
+                        <field name="done_late_task_count" readonly="1"/>
+                        <field name="progress" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_member_construction_list" model="ir.ui.view">
+        <field name="name">member.construction.list</field>
+        <field name="model">member.construction</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="position_id"/>
+                <field name="member_id"/>
+                <field name="project_id"/>
+                <field name="total_task_count"/>
+                <field name="progress"/>
+            </list>
+        </field>
+    </record>
+</odoo>

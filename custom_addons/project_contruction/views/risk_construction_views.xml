@@ -1,0 +1,43 @@
+<odoo>
+    <record id="view_risk_construction_form" model="ir.ui.view">
+        <field name="name">risk.construction.form</field>
+        <field name="model">risk.construction</field>
+        <field name="arch" type="xml">
+            <form string="Construction risk">
+                <sheet>
+                    <group>
+                        <field name="name" placeholder="Nhập tên rủi ro"/>
+                        <field name="risk_level"/>
+                        <field name="risk_type"/>
+                        <field name="task_id" readonly="1"/>
+                        <field name="risk_description" placeholder="Mô tả thông tin về rủi ro"/>
+                        <field name="risk_mitigation" placeholder="Nhập cách thức hạn chế rủi ro"/>
+                        <field name="created_by" readonly="1"/>
+                        <field name="upload_date" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_risk_construction_list" model="ir.ui.view">
+        <field name="name">risk.construction.list</field>
+        <field name="model">risk.construction</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="risk_level"/>
+                <field name="project_id"/>
+                <field name="task_id"/>
+                <field name="risk_type"/>
+                <field name="risk_mitigation"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_risk_construction" model="ir.actions.act_window">
+        <field name="name">Construction risks</field>
+        <field name="res_model">risk.construction</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_risk_construction_root" name="Risks" action="action_risk_construction"/>
+</odoo>

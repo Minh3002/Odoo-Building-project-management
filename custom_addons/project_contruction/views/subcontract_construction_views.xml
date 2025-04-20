@@ -1,0 +1,34 @@
+<odoo>
+    <record id="view_contract_construction_form" model="ir.ui.view">
+        <field name="name">contract.construction.form</field>
+        <field name="model">contract.construction</field>
+        <field name="arch" type="xml">
+            <form string="Construction contract">
+                <sheet>
+                    <group>
+                        <field name="name"  placeholder="Nhập tên nhà thầu phụ"/>
+                        <field name="phone" placeholder="Nhập số điện thoại từ 10-15 số"/>
+                        <field name="email" placeholder="ví dụ abc.childgound@abcrata.vn"/>
+                        <field name="constractor_attachment"/>
+                        <field name="start_date" placeholder="Chọn ngày bắt đầu"/>
+                        <field name="end_date" placeholder="Chọn ngày kết thúc hợp đồng"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_contract_construction_list" model="ir.ui.view">
+        <field name="name">contract.construction.list</field>
+        <field name="model">contract.construction</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="status"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+            </list>
+        </field>
+    </record>
+</odoo>

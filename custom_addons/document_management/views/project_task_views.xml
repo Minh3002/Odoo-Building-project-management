@@ -1,0 +1,21 @@
+<odoo>
+    <record id="view_task_form_inherit_safety" model="ir.ui.view">
+        <field name="name">project.task.form.inherit.safety</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Tài liệu">
+                    <group>
+                        <field name="document_name"/>
+                        <field name="document_description"/>
+                    </group>
+                    <group string="File tài liệu">
+                        <field name="upload_date"/>    
+                        <field name="document_attachment" filename="document_attachment_name"/>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

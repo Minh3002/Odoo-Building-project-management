@@ -1,0 +1,121 @@
+<odoo>
+    <record id="view_task_construction_form" model="ir.ui.view">
+        <field name="name">task.construction.form</field>
+        <field name="model">task.construction</field>
+        <field name="arch" type="xml">
+            <form>
+                <notebook>
+                    <page string="Thông tin chung">
+                        <group>
+                            <!-- <field name="task_id"/> -->
+                            <field name="name" placeholder="Nhập tên hạng mục công việc"/>
+                            <field name="description" placeholder="Nhập mô tả hạng mục công việc"/>
+                            <field name="status_task"/>
+                            <field name="start_date" placeholder="Chọn ngày bắt đầu"/>
+                            <field name="end_date" placeholder="Chọn ngày hết hạn"/>
+                            <field name="project_id"/>
+                            <field name="assigned_members" widget="many2many_tags" placeholder="Phân công cho ai"/>
+                        </group>
+                    </page>
+                    <page string="Hợp đồng">
+                        <field name="contract_ids">
+                            <list>
+                                <field name="name"/>
+                                <field name="member_a"/>
+                                <field name="member_b"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="status"/>
+                            </list>
+                        </field>
+                    </page>
+                    <page string="Vật tư">
+                        <field name="stock_ids">
+                            <list>
+                                <field name="name"/>
+                                <field name="category_id"/>
+                                <field name="quantity"/>
+                                <field name="suplier_name"/>
+                                <field name="project_id"/>
+                            </list>
+                        </field>
+                    </page>
+                    <page string="Ngân sách">
+                        <group string="Lịch sử giao dịch">
+                            <field name="budget_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="created_by"/>
+                                    <field name="amount_type"/>
+                                    <field name="spent_amount"/>
+                                    <field name="upload_date"/>
+                                </list>
+                            </field>
+                        </group>
+                    </page>
+                    <page string="Tài liệu">
+                        <field name="document_ids">
+                            <list>
+                                <field name="document_name"/>
+                                <field name="document_attachment_name"/>
+                                <field name="upload_date"/>
+                            </list>
+                        </field>
+                    </page>
+                    <page string="Công việc con">
+                        <field name="sub_task_ids">
+                            <list>
+                                <field name="wbs"/>
+                                <field name="display_name"/>
+                                <field name="assigned_members" widget="many2many_tags"/>
+                                <field name="status_task"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                            </list>
+                        </field>
+                    </page>
+                    <page string="Rủi ro">
+                        <field name="risk_ids">
+                            <list>
+                                <field name="name"/>
+                                <field name="risk_level"/>
+                            </list>
+                        </field>
+                    </page>
+                    <page string="An toàn lao động">
+                        <field name="safety_ids">
+                            <list>
+                                <field name="name"/>
+                                <field name="safety_attachment_name"/>
+                                <field name="upload_date"/>
+                            </list>
+                        </field>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+    <record id="view_task_construction_list" model="ir.ui.view">
+        <field name="name">task.construction.list</field>
+        <field name="model">task.construction</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list string="Construction Tasks">
+                <field name="task_id"/>
+                <field name="wbs"/>
+                <field name="display_name"/>
+                <field name="assigned_members" widget="many2many_tags"/>
+                <field name="status_task"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_task_construction" model="ir.actions.act_window">
+        <field name="name">Construction Tasks</field>
+        <field name="res_model">task.construction</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('assigned_members.member_id', 'in', [uid])]</field>
+    </record>
+    <menuitem id="menu_task_construction_root" name="My Tasks" action="action_task_construction"/>
+</odoo>

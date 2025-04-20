@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_construction,access_project_construction,model_project_construction,,1,1,1,1
+access_task_construction,access_task_construction,model_task_construction,,1,1,1,1
+access_stage_construction,access_stage_construction,model_stage_construction,,1,1,1,1
+access_risk_construction,access_risk_construction,model_risk_construction,,1,1,1,1
+access_document_construction,access_document_construction,model_document_construction,,1,1,1,1
+access_safety_construction,access_safety_construction,model_safety_construction,,1,1,1,1
+access_contract_construction,access_contract_construction,model_contract_construction,,1,1,1,1
+access_subcontractor_construction,access_subcontractor_construction,model_subcontractor_construction,,1,1,1,1
+access_report_construction,access_report_construction,model_report_construction,,1,1,1,1
+access_budget_construction,access_budget_construction,model_budget_construction,,1,1,1,1
+access_stock_construction,access_stock_construction,model_stock_construction,,1,1,1,1
+access_stock_category_construction,access_stock_category_construction,model_stock_category_construction,,1,1,1,1
+access_member_construction,access_member_construction,model_member_construction,,1,1,1,1
+access_position_construction,access_position_construction,model_position_construction,,1,1,1,1

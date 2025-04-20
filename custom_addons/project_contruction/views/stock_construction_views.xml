@@ -1,0 +1,47 @@
+<odoo>
+    <record id="view_stock_construction_form" model="ir.ui.view">
+        <field name="name">stock.construction.form</field>
+        <field name="model">stock.construction</field>
+        <field name="arch" type="xml">
+            <form string="Construction order">
+                <sheet>
+                    <group string="Thông tin chung">
+                        <field name="name" placeholder="Nhập tên vật tư hoặc vật tư"/>
+                        <field name="description" placeholder="Mô tả vật tư hoặc vật tư"/>
+                        <field name="category_id"/>
+                        <field name="quantity" placeholder="Nhập số lượng vật tư"/>
+                        <field name="amount" placeholder="Nhập giá tiền vật tư"/>
+                        <field name="suplier_name" placeholder="Nhập tên nhà cung cấp vật tư"/>
+                        <field name="phone" placeholder="Nhập số điện thoại nhà cung cấp"/>
+                        <field name="task_id" readonly="1"/>
+                    </group>
+                    <group string="Thông tin thực tế">
+                        <field name="actual_quantity" placeholder="Nhập số lượng vật tư"/>
+                        <field name="actual_amount" placeholder="NNhập giá tiền vật tư"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_stock_construction_list" model="ir.ui.view">
+        <field name="name">stock.construction.list</field>
+        <field name="model">stock.construction</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="category_id"/>
+                <field name="quantity"/>
+                <field name="suplier_name"/>
+                <field name="task_id"/>
+                <field name="project_id"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_stock_construction" model="ir.actions.act_window">
+        <field name="name">Construction stocks</field>
+        <field name="res_model">stock.construction</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_stock_construction_root" name="Stock" action="action_stock_construction"/>
+</odoo>

@@ -1,0 +1,18 @@
+<odoo>
+    <record id="view_task_form_inherit_risk" model="ir.ui.view">
+        <field name="name">project.task.form.inherit.risk</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Rủi ro">
+                    <group>
+                        <field name="risk_level"/>
+                        <field name="risk_description"/>
+                        <field name="risk_mitigation"/>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,15 @@
+.task_status_On_track {
+    background-color: #a0f5ff !important;  /* Xanh lá */
+}
+
+.task_status_Delay {
+    background-color: #ffb5be !important;  /* Đỏ nhạt */
+}
+
+.task_status_Done {
+    background-color: #aaffb4 !important;  /* Xanh dương nhạt */
+}
+
+.task_status_Done_late {
+    background-color: #ffeb9c !important;  /* Vàng nhạt */
+}

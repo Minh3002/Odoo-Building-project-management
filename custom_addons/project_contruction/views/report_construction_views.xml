@@ -1,0 +1,48 @@
+<odoo>
+    <record id="view_project_report_list" model="ir.ui.view">
+        <field name="name">report.construction.list</field>
+        <field name="model">report.construction</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="project_id"/>
+                <field name="total_task_count"/>
+                <field name="delay_task_count"/>
+                <field name="done_task_count"/>
+                <field name="done_late_task_count"/>
+                <field name="progress"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_project_report_form" model="ir.ui.view">
+        <field name="name">report.construction.graph</field>
+        <field name="model">report.construction</field>
+        <field name="arch" type="xml">
+            <form>
+                <graph string="Tasks Analysis" sample="1" disable_linking="1">
+                    <field name="project_id"/>
+                    <field name="total_task_count"/>
+                    <field name="delay_task_count" widget="float_time"/>
+                    <field name="done_task_count" widget="float_time"/>
+                    <field name="progress" invisible="1"/>
+                </graph>
+            </form>
+        </field>
+    </record>
+    <record id="view_report_construction_kanban" model="ir.ui.view">
+        <field name="name">report.construction.kanban</field>
+        <field name="model">report.construction</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card">
+                            <div class="oe_kanban_details">
+                                <canvas t-att-id="'chart_' + str(record.id)" class="chart-container"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>

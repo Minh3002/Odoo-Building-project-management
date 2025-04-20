@@ -1,0 +1,24 @@
+<odoo>
+     <record id="view_stage_form" model="ir.ui.view">
+        <field name="name">stage.construction.form</field>
+        <field name="model">stage.construction</field>
+        <field name="arch" type="xml">
+            <form string="stage Stage">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_add_stage" model="ir.actions.act_window">
+        <field name="name">Add Stage</field>
+        <field name="res_model">stage.construction</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_stage_form"/>  <!-- Thêm view_id để đảm bảo mở đúng form -->
+        <field name="target">new</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,37 @@
+<odoo>
+    <record id="view_budget_construction_form" model="ir.ui.view">
+        <field name="name">budget.construction.form</field>
+        <field name="model">budget.construction</field>
+        <field name="arch" type="xml">
+            <form string="Construction budget">
+                <sheet>
+                    <group>
+                        <field name="name" placeholder="Nhập tên khoản chi hoặc ngân sách cấp thêm"/>
+                        <field name="description" placeholder="Mô tả chi tiết khoảng chi"/>
+                        <field name="amount_type" placeholder="Chọn loại khoản chi"/>
+                        <field name="spent_amount" placeholder="Số tiền đã chi"/>
+                        <field name="upload_date"/>
+                        <field name="created_by"/>
+                        <field name="task_id" readonly="1"/>
+                        <field name="attachment_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_budget_construction_list" model="ir.ui.view">
+        <field name="name">budget.construction.list</field>
+        <field name="model">budget.construction</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="created_by"/>
+                <field name="amount_type"/>
+                <field name="project_id"/>
+                <field name="spent_amount"/>
+                <field name="upload_date"/>
+            </list>
+        </field>
+    </record>
+</odoo>

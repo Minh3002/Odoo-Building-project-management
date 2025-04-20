@@ -1,0 +1,177 @@
+<odoo>
+    <data>
+        <!-- Danh sách dự án -->
+        <record id="view_project_construction_list" model="ir.ui.view">
+            <field name="name">project.construction.list</field>
+            <field name="model">project.construction</field>
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="name"/>
+                    <field name="status_construction"/>
+                    <field name="category"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                </list>
+            </field>
+        </record>
+        <!-- Form chi tiết dự án -->
+        <record id="view_project_construction_form" model="ir.ui.view">
+            <field name="name">project.construction.form</field>
+            <field name="model">project.construction</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <notebook>
+                            <page string="Thông tin chung">
+                                <group>
+                                    <field name="name" string="Tên dự án" placeholder="Nhập tên dự án"/>
+                                    <field name="category" string="Phân loại công trình" placeholder="Chọn loại dự án"/>
+                                    <field name="status_construction" string="Tình trạng dự án"/>
+                                    <field name="leader_id" string="Quản lý dự án" placeholder="Chọn người quản lý"/>
+                                    <field name="description" string="Mô tả dự án" placeholder="Nhập mô tả về dự án..."/>
+                                    <field name="location" string="Vị trí" placeholder="Nhập vị trí xây dựng dự án"/>
+                                    <field name="area" string="Diện tích (m2)" placeholder="Nhập diện tích lô đất"/>
+                                    <field name="scale" string="Quy mô dự án" placeholder="Nhập quy mô của dự án"/>
+                                    <field name="date_start" string="Ngày bắt đầu" placeholder="Chọn ngày bắt đầu dự án"/>
+                                    <field name="date_end" string="Ngày kết thúc (dự kiến)" placeholder="Chọn ngày kết thúc dự án dự kiến"/>
+                                    <field name="actual_date_end" string="Ngày kết thúc (Thực tế)" placeholder="Chọn ngày kết thúc dự án thực tế"/>
+                                </group>
+                            </page>
+                            <page string="Thành viên">
+                                <field name="member_ids">
+                                    <list>
+                                        <field name="member_id"/>
+                                        <field name="position_id"/>
+                                        <field name="total_task_count"/>
+                                        <field name="progress" widget="percentage"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Hạng mục công việc">
+                                <field name="task_ids" mode="list,form" context="{'form_view_ref': 'project_construction.view_task_construction_form'}"/>
+                            </page>
+                            <page string="Hợp đồng">
+                                <field name="contract_ids">
+                                    <list>
+                                        <field name="name"/>
+                                        <field name="member_a"/>
+                                        <field name="member_b"/>
+                                        <field name="task_id"/>
+                                        <field name="start_date"/>
+                                        <field name="end_date"/>
+                                        <field name="status"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Vật tư">
+                                <field name="stock_ids">
+                                    <list>
+                                        <field name="name"/>
+                                        <field name="task_id"/>
+                                        <field name="category_id"/>
+                                        <field name="quantity"/>
+                                        <field name="suplier_name"/>
+                                        <field name="project_id"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Ngân sách">
+                                <group string="Ngân sách dự án">
+                                    <field name="budget_amount" string="Ngân sách ban đầu"/>
+                                    <field name="spent_amount" string="Ngân sách đã dùng"/>
+                                    <field name="costs_incurred" string="Tổng chi phí phát sinh"/>
+                                    <field name="remaining_budget" string="Ngân sách còn lại"/>
+                                </group>
+                                <group string="Lịch sử giao dịch">
+                                    <field name="budget_ids">
+                                        <list>
+                                            <field name="name"/>
+                                            <field name="created_by"/>
+                                            <field name="amount_type"/>
+                                            <field name="spent_amount"/>
+                                            <field name="task_id"/>
+                                            <field name="upload_date"/>
+                                        </list>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Tài liệu">
+                                <field name="document_ids">
+                                    <list>
+                                        <field name="document_name"/>
+                                        <field name="task_id"/>
+                                        <field name="document_attachment_name"/>
+                                        <field name="upload_date"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Rủi ro">
+                                <field name="risk_ids">
+                                    <list>
+                                        <field name="name"/>
+                                        <field name="task_id"/>
+                                        <field name="risk_type"/>
+                                        <field name="risk_level"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="An toàn lao động">
+                                <field name="safety_ids">
+                                    <list>
+                                        <field name="name"/>
+                                        <field name="task_id"/>
+                                        <field name="safety_attachment_name"/>
+                                        <field name="upload_date"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Thống kê tiến độ">
+                                <group string="Tiến độ dự án">
+                                    <div class="d-flex flex-column gap-3">
+                                        <div class="d-flex flex-row gap-3">
+                                            <field name="total_task_count" widget="statinfo" class="flex-grow-1" string=" Tổng công việc"/>
+                                            <field name="delay_task_count" widget="statinfo" class="flex-grow-1" string=" Công việc trễ" options="{'color': 'danger'}"/>
+                                            <field name="done_task_count" widget="statinfo" class="flex-grow-1" string=" Hoàn thành đúng hạn" options="{'color': 'success'}"/>
+                                            <field name="done_late_task_count" widget="statinfo" class="flex-grow-1" string=" Hoàn thành trễ" options="{'color': 'warning'}"/>
+                                        </div>
+                                    </div>
+                                    <field name="progress" string="Tiến độ dự án" widget="percentage"/>
+                                </group>
+                                <group string="Tiến độ theo hạng mục">
+                                    <field name="task_ids" readonly="1">
+                                        <list>
+                                            <field name="wbs"/>
+                                            <field name="display_name"/>
+                                            <field name="total_task_count"/>
+                                            <field name="delay_task"/>
+                                            <field name="done_task"/>
+                                            <field name="done_late_task"/>
+                                            <field name="progress" widget="percentage"/>
+                                        </list>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- Action mở danh sách dự án -->
+        <record id="action_project_construction" model="ir.actions.act_window">
+            <field name="name">Project Construction</field>
+            <field name="res_model">project.construction</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first construction project!
+                </p>
+            </field>
+        </record>
+        <!-- Menu chính -->
+        <menuitem id="menu_project_construction_root"
+                  name="Project Construction"
+                  sequence="10"
+                  action="action_project_construction"/>
+    </data>
+</odoo>
